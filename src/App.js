@@ -11,7 +11,11 @@ class App extends Component {
   }
 
   formSubmitHandler = data => {
-    this.state.contacts.push({ id: nanoid(), name: data.name, number: data.number });
+    this.setState(prevState => {
+      return{
+        contacts: [ ...prevState.contacts, { id: nanoid(), name: data.name, number: data.number }]
+      }
+    });
   }
 
 
