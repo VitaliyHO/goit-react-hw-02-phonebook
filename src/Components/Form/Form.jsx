@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import style from './Form.module.css';
 
 
 
@@ -15,7 +16,7 @@ class Form extends Component {
     inputPhoneId = nanoid();
 
     handleChange = event => {
-        const { name, value } = event.target
+        const { name, value } = event.target;
         this.setState({ [name]: value });
     }
 
@@ -35,12 +36,13 @@ class Form extends Component {
 
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor={this.inputNameId}>
+            <div className='container'>
+                <form className={style.form} onSubmit={this.handleSubmit}>
+                    <label className={style.label} htmlFor={this.inputNameId}>
                         Name
                     </label>
                     <input
+                        className={style.input}
                         type="text"
                         id={this.inputNameId}
                         name="name"
@@ -51,10 +53,11 @@ class Form extends Component {
                         required
                     />
 
-                    <label htmlFor={this.inputPhoneId}>
-                        Phone number
+                    <label className={style.label} htmlFor={this.inputPhoneId}>
+                        Number
                     </label>
                     <input
+                        className={style.input}
                         type="tel"
                         id={this.inputPhoneId}
                         name="number"
@@ -65,7 +68,7 @@ class Form extends Component {
                         required
                     />
 
-                    <button type="submit">Add contact</button>
+                    <button className={style.submitButton} type="submit">Add contact</button>
                 </form>
             </div>
         )
